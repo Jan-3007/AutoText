@@ -1,0 +1,13 @@
+
+# Visual Studio 2022 cache directory
+.vs/
+
+# User-specific files
+*.user
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+bin/
+
