@@ -11,10 +11,17 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="KeywordManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="autotext.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="KeywordManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="autotext.rc" />
