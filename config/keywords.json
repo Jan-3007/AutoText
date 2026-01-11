@@ -1,0 +1,33 @@
+{
+
+    "general": [
+        {
+            "keyword": "hw",
+            "snippet": "hello world"
+        }
+    ],
+
+
+
+    "email": [
+        {
+            "keyword": "mfg",
+            "snippet": "mit freun..."
+        },
+        {
+            "keyword": "sig",
+            "file": "sig.txt"
+        },
+        {
+            "keyword": "sig2",
+            "snippet": [
+                "line1",
+                "line2", 
+                "line3"
+            ]
+        }
+    ]
+
+
+
+}

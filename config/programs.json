@@ -1,0 +1,17 @@
+{
+    "global": {
+        "keywordLists": ["general"]
+    },
+
+
+
+    "programs": [
+        {
+            "name": "thunderbird",
+            "keywordLists": ["email", "general"]
+        }
+    ]
+}
+
+
+
