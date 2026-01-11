@@ -22,7 +22,7 @@ Settings::load(const std::filesystem::path& filePath)
     File f;
     Status st = f.open(filePath.string().c_str(), "rb");
     if ( st != Status::Success ) {
-        //TODO error logging
+        SPDLOG_ERROR("open({}) failed, st = {}", filePath.string(), st);
         return st;
     }
 
@@ -34,11 +34,11 @@ Settings::load(const std::filesystem::path& filePath)
         readJson(data);
 
     } catch (const json::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("json::exception: {}", ex.what());
         return Status::JsonError;
 
     } catch (const std::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("std::exception: {}", ex.what());
         return Status::JsonError;
     }
     

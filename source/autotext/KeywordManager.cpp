@@ -47,7 +47,7 @@ KeywordManager::loadKeywords(const std::filesystem::path& configDirectory)
     File f;
     Status st = f.open(filePath.string().c_str(), "rb");
     if ( st != Status::Success ) {
-        //TODO error logging
+        SPDLOG_ERROR("open({}) failed, st={}", filePath.string(), st);
         return st;
     }
 
@@ -59,11 +59,11 @@ KeywordManager::loadKeywords(const std::filesystem::path& configDirectory)
         readKeywordsJson(data);
 
     } catch (const json::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("json::exception: {}", ex.what());
         return Status::JsonError;
 
     } catch (const std::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("std::exception: {}", ex.what());
         return Status::JsonError;
     }
 
@@ -80,7 +80,7 @@ KeywordManager::loadPrograms(const std::filesystem::path& configDirectory)
     File f;
     Status st = f.open(filePath.string().c_str(), "rb");
     if ( st != Status::Success ) {
-        //TODO error logging
+        SPDLOG_ERROR("open({}) failed, st={}", filePath.string(), st);
         return st;
     }
 
@@ -92,11 +92,11 @@ KeywordManager::loadPrograms(const std::filesystem::path& configDirectory)
         readProgramsJson(data);
 
     } catch (const json::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("json::exception: {}", ex.what());
         return Status::JsonError;
 
     } catch (const std::exception& ex) {
-        //TODO error logging
+        SPDLOG_ERROR("std::exception: {}", ex.what());
         return Status::JsonError;
     }
 
@@ -113,7 +113,7 @@ KeywordManager::readKeywordsJson(const json& jsonObject)
         // value is expected to be an array
         json array = element.value();
         if ( !array.is_array() ) {
-            //TODO error logging
+            SPDLOG_WARN("expected an array, got {}", array.type_name());
 
             // skip this element
             continue;
@@ -140,14 +140,16 @@ KeywordManager::readKeywordsArray(const json& jsonArray)
 
         // each item is expected to be an object (dict)
         if ( !object.is_object() ) {
-            //TODO error logging
+            SPDLOG_WARN("expected an object, got {}", object.type_name());
+
             // skip this element
             continue;
         }
 
         // keyword is mandatory
         if ( !object.contains(keyKeyword) ) {
-            //TODO error logging
+            SPDLOG_WARN("missing required key 'keyword' in key-snippet definition");
+            
             // skip this element
             continue;
         }
@@ -189,7 +191,8 @@ KeywordManager::readProgramsJson(const json& jsonObject)
         // and is expecteted to be an array
         json array = jsonObject.at(keyPrograms);
         if ( !array.is_array() ) {
-            //TODO error logging
+            SPDLOG_WARN("expected an array, got {}", array.type_name());
+            
         } else {
             mProgramList = readProgramsArray(array);
         }
@@ -207,14 +210,16 @@ KeywordManager::readProgramsArray(const json& jsonArray)
 
         // each item is expected to be an object (dict)
         if ( !object.is_object() ) {
-            //TODO error logging
+            SPDLOG_WARN("expected an object, got {}", object.type_name());
+
             // skip this element
             continue;
         }
 
         // name is mandatory
         if ( !object.contains(keyName) ) {
-            //TODO error logging
+            SPDLOG_WARN("missing required key 'name' in program-keywords definition");
+
             // skip this element
             continue;
         }
@@ -223,7 +228,8 @@ KeywordManager::readProgramsArray(const json& jsonArray)
 
         // name must be a string
         if ( !name.is_string() ) {
-            //TODO error logging
+            SPDLOG_WARN("value of key 'name' must be a string");
+
             // skip this element
             continue;
         }
@@ -251,7 +257,8 @@ KeywordManager::readKeywordListsAttribute(const json& jsonObject)
         
     // keywordLists is expected to be an array
     if ( !array.is_array() ) {
-        //TODO error logging
+        SPDLOG_ERROR("expected an array, got {}", array.type_name());
+
         return std::vector<KeywordListPtr> {};
     }
 
@@ -262,7 +269,8 @@ KeywordManager::readKeywordListsAttribute(const json& jsonObject)
         
         // each item is expected to be a string
         if ( !item.is_string() ) {
-            //TODO error logging
+            SPDLOG_WARN("items in 'keywordLists' must be strings, got: {}", item.type_name());
+            
             // skip
             continue;
         }
@@ -271,7 +279,8 @@ KeywordManager::readKeywordListsAttribute(const json& jsonObject)
 
         KeywordListPtr list = findKeywordList(listName);
         if ( !list ) {
-            //TODO error logging
+            SPDLOG_WARN("keywordList '{}' not found", listName);
+
             // list not defined, skip
             continue;
         }

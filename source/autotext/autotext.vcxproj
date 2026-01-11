@@ -152,7 +152,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)import</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)import\spdlog\include;$(SolutionDir)import\json\single_include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

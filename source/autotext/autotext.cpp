@@ -25,7 +25,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: Place code here.
+
+    // configure spdlog
+    {
+        auto sink = std::make_shared<spdlog::sinks::msvc_sink_st>();
+        auto logger = std::make_shared<spdlog::logger>("AutoText", sink);
+        logger->sinks()[0]->set_pattern("%T thread ID %t: '%!' [%l] %v");
+        spdlog::set_default_logger(logger);
+    }
+
+    // timestamp in ms, thread ID, level, func name
+    SPDLOG_INFO("Starting AutoText");
+
+
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
