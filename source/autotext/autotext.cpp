@@ -3,6 +3,9 @@
 
 #include "pch.h"
 #include "autotext.h"
+#include "autotext_hooks.h"
+
+
 
 #define MAX_LOADSTRING 100
 
@@ -28,14 +31,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // configure spdlog
     {
-        auto sink = std::make_shared<spdlog::sinks::msvc_sink_st>();
+        // set check_debugger_present = false
+        auto sink = std::make_shared<spdlog::sinks::msvc_sink_st>(false);
+        sink->set_pattern("%T.%e AutoTextEXE [%P] (%t) [%l] %!: %v");
+
         auto logger = std::make_shared<spdlog::logger>("AutoText", sink);
-        logger->sinks()[0]->set_pattern("%T thread ID %t: '%!' [%l] %v");
         spdlog::set_default_logger(logger);
+        spdlog::set_level(spdlog::level::trace);
     }
 
     // timestamp in ms, thread ID, level, func name
     SPDLOG_INFO("Starting AutoText");
+
+
+    // test DLL
+    bool succ = autotext_hooks::installHooks();
+    
 
 
 

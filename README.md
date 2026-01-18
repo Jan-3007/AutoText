@@ -13,3 +13,13 @@ Link: https://github.com/nlohmann/json
 Link: https://sourceforge.net/projects/wtl
 
 
+
+
+# Windows APIs
+
+## Hooks
+Link: https://learn.microsoft.com/en-us/windows/win32/winmsg/hooks
+
+## SendInput
+Link: https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput
+
