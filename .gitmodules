@@ -12,3 +12,7 @@
 	path = import/spdlog
 	url = https://github.com/gabime/spdlog.git
 	branch = v1.x
+[submodule "lib/libstdx"]
+	path = lib/libstdx
+	url = https://github.com/Jan-3007/libstdx.git
+	branch = main
