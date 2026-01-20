@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
     // test DLL
-    bool succ = autotext_hooks::installHooks();
+    //bool succ = autotext_hooks::installHooks();
     
 
 

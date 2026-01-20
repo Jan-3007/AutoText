@@ -10,6 +10,8 @@ namespace autotext_hooks
 {
 
 HHOOK gHookHandle = nullptr;
+KeystrokeCallback* gCallback = nullptr;
+void* gContext = nullptr;
 
 
 LRESULT
@@ -20,6 +22,9 @@ keyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 
 		SPDLOG_DEBUG("nCode={}, wParam={:#x}, lParam={:#x}", nCode, wParam, lParam);
 
+		if (gCallback != nullptr) {
+			gCallback(gContext, wParam, lParam);
+		}
 	}
 
 	return CallNextHookEx(gHookHandle, nCode, wParam, lParam);
@@ -30,7 +35,10 @@ keyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 
 __declspec(dllexport)
 bool
-installHooks()
+installHooks(
+	KeystrokeCallback* callback,
+	void* context
+	)
 {
 	if (gHookHandle != nullptr)	{
 		SPDLOG_ERROR("hook already installed");
@@ -50,6 +58,9 @@ installHooks()
 		return false;
 	}
 
+	gCallback = callback;
+	gContext = context;
+
 	SPDLOG_INFO("hook successfully installed, gDllModuleHandle={}", static_cast<void*>(gDllModuleHandle));
 	return true;
 }
@@ -67,6 +78,9 @@ uninstallHooks()
 			SPDLOG_ERROR("UnhookWindowsHookEx() failed, err={}", err);
 			return false;
 		}
+
+		gCallback = nullptr;
+		gContext = nullptr;
 	}
 
 	return true;

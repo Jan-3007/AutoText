@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "autotext", "source\autotext
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "autotext_hooks", "source\autotext_hooks\autotext_hooks.vcxproj", "{44312773-E86E-49D1-B021-4FA1A5839A7E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libstdx", "lib\libstdx\libstdx.vcxitems", "{FF95519A-E322-4503-99FE-1950E70AD2D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,5 +39,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EEC7D88F-B177-4FB7-B1BF-09E85932A3C4}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		lib\libstdx\libstdx.vcxitems*{716de3e3-49e2-42c7-8c4d-2d40ab0a0537}*SharedItemsImports = 4
+		lib\libstdx\libstdx.vcxitems*{ff95519a-e322-4503-99fe-1950e70ad2d2}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal
