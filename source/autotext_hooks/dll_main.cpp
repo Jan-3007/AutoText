@@ -36,7 +36,6 @@ DllMain(
                 spdlog::set_level(spdlog::level::trace);
             }
 
-            // timestamp in ms, thread ID, level, func name
             SPDLOG_INFO("Initialized logging for DLL");
 
             SPDLOG_INFO("DLL_PROCESS_ATTACH lpReserved={} ({})", lpReserved, (nullptr == lpReserved) ? "LoadLibrary" : "static load");

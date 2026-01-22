@@ -30,6 +30,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
     // configure spdlog
+#ifdef _DEBUG
     {
         // set check_debugger_present = false
         auto sink = std::make_shared<spdlog::sinks::msvc_sink_st>(false);
@@ -39,8 +40,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         spdlog::set_default_logger(logger);
         spdlog::set_level(spdlog::level::trace);
     }
+#endif
 
-    // timestamp in ms, thread ID, level, func name
     SPDLOG_INFO("Starting AutoText");
 
 
