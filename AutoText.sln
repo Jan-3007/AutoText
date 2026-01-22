@@ -41,6 +41,7 @@ Global
 		SolutionGuid = {EEC7D88F-B177-4FB7-B1BF-09E85932A3C4}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		lib\libstdx\libstdx.vcxitems*{44312773-e86e-49d1-b021-4fa1a5839a7e}*SharedItemsImports = 4
 		lib\libstdx\libstdx.vcxitems*{716de3e3-49e2-42c7-8c4d-2d40ab0a0537}*SharedItemsImports = 4
 		lib\libstdx\libstdx.vcxitems*{ff95519a-e322-4503-99fe-1950e70ad2d2}*SharedItemsImports = 9
 	EndGlobalSection

@@ -61,7 +61,7 @@ installHooks(
 	gCallback = callback;
 	gContext = context;
 
-	SPDLOG_INFO("hook successfully installed, gDllModuleHandle={}", static_cast<void*>(gDllModuleHandle));
+	SPDLOG_INFO("hook successfully installed, gDllModuleHandle={}", stdx::fmt_ptr(gDllModuleHandle));
 	return true;
 }
 

@@ -18,7 +18,6 @@
 
 
 // our std extension library
-
 #include "libstdx.h"
 
 

@@ -10,6 +10,9 @@
 // Windows Header Files
 #include <windows.h>
 
+// our std extension library
+#include "libstdx.h"
+
 
 
 // Logging library, see https://github.com/gabime/spdlog

@@ -72,7 +72,7 @@ Settings::readJson(const json& jsonObject)
 bool 
 Settings::checkTrigger(std::string_view trig)
 {
-    std::string lcTrig = convertStringToLowerCase(trig);
+    std::string lcTrig = stdx::to_lower_case(trig);
 
     if ( lcTrig == "tab" ) {
         return true;
