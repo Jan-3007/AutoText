@@ -4,6 +4,11 @@ Keyword-based text expansion for Windows.
 
 
 
+# C++
+This project requires C+20 at least.
+
+
+
 # Submodules
 
 ## json
